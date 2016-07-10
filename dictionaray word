@@ -1,0 +1,41 @@
+import java.io.*;
+
+class dictionary
+{
+    publicstaticvoid main(String args[])
+    {
+        int i;
+        boolean flag = false;
+        String sub = new String();
+        String strf = new String();
+
+        try
+        {
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            String str = br.readLine();
+            FileReader fr = new FileReader("dictionaryTXT.txt");
+            BufferedReader bb = new BufferedReader(fr);
+            
+            while((strf = bb.readLine()) != null)
+            {
+                i = strf.indexOf(":");
+                sub = strf.substring(0,i);
+                if(str.equals(sub))
+                {
+                    System.out.println(strf);
+                    flag=true;
+                }
+        
+            }
+            bb.close();
+
+            if(!flag)
+                System.out.println("Word not found");
+
+        }catch(Exception e)
+        {
+            System.out.println(e);
+        }
+    }
+}
+
